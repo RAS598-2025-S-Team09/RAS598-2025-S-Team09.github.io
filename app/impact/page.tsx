@@ -1,10 +1,10 @@
 import DocumentationLayout from "@/components/documentation-layout"
-import Overview from "@/components/overview"
+import Impact from "@/components/impact"
 
-export default function Home() {
+export default function ImpactPage() {
   return (
     <DocumentationLayout>
-      <Overview />
+      <Impact />
     </DocumentationLayout>
   )
 }

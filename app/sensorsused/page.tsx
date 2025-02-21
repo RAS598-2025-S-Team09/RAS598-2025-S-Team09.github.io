@@ -1,10 +1,10 @@
 import DocumentationLayout from "@/components/documentation-layout"
-import Overview from "@/components/overview"
+import SensorsUsed from "@/components/sensorsused"
 
-export default function Home() {
+export default function SensorsUsedPage() {
   return (
     <DocumentationLayout>
-      <Overview />
+      <SensorsUsed />
     </DocumentationLayout>
   )
 }

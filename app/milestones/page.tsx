@@ -1,10 +1,10 @@
 import DocumentationLayout from "@/components/documentation-layout"
-import Overview from "@/components/overview"
+import Milestones from "@/components/milestones"
 
-export default function Home() {
+export default function MilestonesPage() {
   return (
     <DocumentationLayout>
-      <Overview />
+      <Milestones />
     </DocumentationLayout>
   )
 }

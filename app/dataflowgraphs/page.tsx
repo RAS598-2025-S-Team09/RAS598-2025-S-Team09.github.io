@@ -1,10 +1,10 @@
 import DocumentationLayout from "@/components/documentation-layout"
-import Overview from "@/components/overview"
+import DataFlowGraphs from "@/components/dataflowgraphs"
 
-export default function Home() {
+export default function DataFlowGraphPage() {
   return (
     <DocumentationLayout>
-      <Overview />
+      <DataFlowGraphs />
     </DocumentationLayout>
   )
 }
