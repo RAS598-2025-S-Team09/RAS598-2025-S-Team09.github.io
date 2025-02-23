@@ -55,6 +55,7 @@ body
 {
     display: flex;
     flex-flow: column nowrap;
+    /* padding: 1% 0; */
 }
 
 .main-section > header
@@ -115,20 +116,7 @@ ul > li
 {
     padding-left: 10%;
 }
-.overview-img
-{
-    display: flex;
-    flex: 0.5 0.5;
-}
-.overview-img1
-{
-    width: 50%;
-}
-.overview-img2
-{
-    width: 50%;
-}
-.tech-stack, .sensors
+.tech-stack, .sensors, .stages, .controls, .topics, .need, .show
 {
     font-size: 25px;
 }
@@ -142,21 +130,25 @@ th, td
 {
     color: red;
 }
-.ideation
+.setup
 {
     color: green;
 }
-.implementation
+.collection
 {
     color: blue;
 }
-.documentation
+.fusion
 {
     color: violet;
 }
-.demonstration
+.autonomy
 {
     color: orange;
+}
+.demonstration
+{
+    color: purple;
 }
 .emoji
 {

@@ -15,13 +15,12 @@
 		<a href="#sensorsused" class="nav-link">Sensors Used</a>
 		<a href="#dataflowgraphs" class="nav-link">Data Flow Graphs</a>
 		<a href="#milestones" class="nav-link">Milestones</a>
+		<a href="#final" class="nav-link">Final Demonstration</a>
 		<a href="#impact" class="nav-link">Impact</a>
 	</nav>
 	<main id="main-doc">
-		<section class="main-section" id="overview">
-			<header>Overview</header>
-			<ul class="my-info" id="my-info">
-				<li>Project: Table Tennis playing UR5 robot and ball picking Autonomous robot</li>
+		<ul class="my-info" id="my-info">
+				<li>Project: Autonomous Navigator for Visually Impaired people</li>
 				<li>Team Number: 09</li>
 				<li>
 					Team Members:
@@ -33,35 +32,57 @@
 				<li>University: Arizona State University</li>
 				<li>Class: RAS 598 Deployment and Experimentation of Robotic Systems</li>
 			</ul>
+		<section class="main-section" id="overview">
+			<header>Overview</header>
 			<br>
 			<br>
-			<div class="overview-img" id="overview-img">
-				<img src="arm.png" alt="UR5 Robot URDF" class="overview-img1" id="overview-img1">
-				<img src="bot.png" alt="Turtlebot" class="overview-img2" id="overview-img2">
-			</div>
-			<p>This project involves making a UR5 robot (by Universal Robots) learn to play table tennis against a human or another UR5 robot and an autonomous Turtlebot that can drive autonomously to track and pick up fallen balls. The project helps us understand various tasks that can be acheived when one can integrate Vision, Motion and Controls.</p>
+			<img src="robot.png" alt="Turtlebot" class="overview-img1" id="overview-img1">
+			<p>Our team aims to develop an autonomous TurtleBot designed to assist visually impaired individuals in navigating indoor environments safely and efficiently. One can also extend the use case to navigating an unknown environment. The key question this project seeks to answer is: Can an autonomous mobile robot enhance independent mobility for blind individuals by providing reliable, obstacle-free navigation? Our proposed solution allows users to attach their walking stick to the back of the TurtleBot, which will then autonomously guide them to a chosen destination while ensuring obstacle avoidance and smooth navigation. The project helps us understand various tasks that can be acheived when one can integrate Vision, Motion and Controls.</p>
+			<p><b>Interfaces</b></p>
+			<p>The TurtleBot will be influenced by two key inputs: pre-programmed waypoints and real-time user adjustments. Visualization will be seen in Rviz. Gazebo will be used for simulation.</p>
+			<p><b>Control and Autonomy</b></p>
+			<ul class="controls">
+				<li>Low-Level Control: The motor controller will process real-time sensor data to adjust speed and direction dynamically.</li>
+				<li>High-Level Control: A ROS2-based navigation stack will handle path planning, SLAM (Simultaneous Localization and Mapping), and obstacle avoidance.</li>
+				<li>Feedback Loop: Sensor data will continuously be fed into a decision-making algorithm that adapts to environmental changes.</li>
+			</ul>
+			<p><b>Topics to be covered in class</b></p>
+			<ul class="topics" id="topics">
+				<li>ROS 2 Navigation: This module helps detect obstacles, generate map and plan a path.</li>
+				<li>ROS 2 Control: This module helps in giving appropriate commands to the Turtlebot to optimize motion and execute actions.</li>
+				<li>SLAM: This module is responsible for mapping and localization in a new environment.</li>
+				<li>Autonomous Driving: All the above modules facilitate autonomous driving.</li>
+			</ul>
 		</section>
 		<section class="main-section" id="technology">
 			<header>Technology Used</header>
 			<p>The technical stack includes the following:</p>
 			<ul class="tech-stack" id="tech-stack">
 				<li>ROS 2 Humble: This middleware/framework is responsible for communication between various modules like perception, planning, controls involving sensors and actuators like camera, IMU, joint motors, etc.</li>
-				<li>Gazebo: This is the simulation environment used to work on various scenarios in the real world. This also captures various interactions between the different components like robot arm, ball, paddle and table</li>
+				<li>Gazebo: This is the simulation environment used to work on various scenarios in the real world. This also captures various interactions between the different components like Turtlebot, obstacles and free space</li>
 				<li>OpenCV: This library is used for Computer Vision and Image Processing that helps locate amd track objects in the surrounding leading to better interaction.</li>
-				<li>Reinforcement Learning: This technology helps the robot learn the art of taking appropriate action given a state or observation. Unlike traditional Computer Vision, where actions are hard-coded against actions, here the robot learns various actions and their use in various scenarios and can apply it in unknown scenarios.</li>
-				<li>ROS 2 Navigation: This is required for the Turtlebot to navigate in a real environment as it is tasked to pick up fallen tennis balls.</li>
-				<li>Sensor Fusion: The technique combines data from various sensors to give the robot a better estimate of the world which inturn helps it take better actions.</li>
+				<li>ROS 2 Navigation: This is required for the Turtlebot to navigate in an environment, map various obstacles and generate a map for future trips.</li>
+				<li>ROS 2 Control: This is required for executing motion and get odometry data.</li>
+				<li>Sensor Fusion: The technique combines data from various sensors to give the Turtlebot a better estimate of the world which inturn helps it take better actions.</li>
 			</ul>
 		</section>
 		<section class="main-section" id="sensorsused">
 			<header>Sensors Used</header>
-			<p>The following sensor and actuators are used in this project:</p>
+			<p><b>The following sensor and actuators are used in this project:</b></p>
 			<ul class="sensors" id="sensors">
 				<li>RGBD Camera: This sensor gives information about visual aspects of an environment along with the tactile aspects like distance. The sensor uses IR sensors to gain depth information along with regular RGB cameras.</li>
-				<li>IMU: This sensor gives information about the various forces acting on an the object (Turtlebot or robot arm). It consists of Accelometer, Gyroscope and sometime a Magnetometer. One can gain velocity and displacement from this sensor too.</li>
-				<li>UR5 Robot: This is the fifth collaborative robot (CoBot) in the UR series of robots. The specifications of this robot can be seen <a href="https://www.universal-robots.com/products/ur5e/">here</a>.</li>
+				<li>IMU: This sensor gives information about the various forces acting on an the Turtlebot like acceleration, gravity, etc. It consists of Accelometer, Gyroscope and sometime a Magnetometer. One can gain velocity and displacement from this sensor too.</li>
+				<li>LiDAR: This is a tactile sensor used to gain information about the obstacles at a distance. This sensor shoots laser beams in a circle and the receiver captures the reflected laser beams back and estimates distance based on the intensity of the captured beams.</li>
+				<li>GPS (optional): This sensor provides the information of the current location on a physical map. This is useful only in outdoor navigation.</li>
 				<li>Turtlebot: This is a mobile robot with sensors like RGBD camera, IMU, LiDAR, etc that can be turned into an autonomous vehicle by integrating navigation, localization and mapping. The specifications can be viewed <a href="https://www.turtlebot.com/">here</a></li>
 			</ul>
+			<p><b>Stages</b></p>
+			<ul class="stages" id="stages">
+				<li>Development Phase: We will use recorded sensor data to simulate real-world conditions and improve our navigation algorithms.</li>
+				<li>Testing Phase: Sensors will be used in live environments to measure how well the bot detects and avoids obstacles, responds to dynamic changes, and maintains smooth navigation.</li>
+				<li>Final Demonstration: Sensor data will be used to visualize real-time mapping, path planning, and obstacle avoidance performance.</li>
+			</ul>
+			<p>The LiDAR on the Turtlebot will help in mapping obstacles at a distance, verify RGBD camera's data. RGBD camera helps map closer obstacles, verify LiDAR's data and map landmarks used for Simultaneous Localization and Mapping (SLAM). The IMU helps to know acceleration of the Turtlebot when moving, measure odometry and get information about the floor terrain. In the final demonstration, I will physically demonstrate the autonomous driving capability of the Turtlebot in a classroom environment with some obstacles like table, chairs and people.</p>
 		</section>
 		<section class="main-section" id="dataflowgraphs">
 			<header>Data Flow Graphs</header>
@@ -69,7 +90,7 @@
 		</section>
 		<section class="main-section" id="milestones">
 			<header>Milestones</header>
-			<p>This is the Gantt Chart for the project:</p>
+			<p><b>This is the Gantt Chart for the project:</b></p>
 			<table class="gantt-chart" id="gantt-chart">
 				<tr>
 					<th>STEPS</th>
@@ -113,19 +134,13 @@
 					<td></td>
 					<td></td>
 				</tr>
-				<tr class="ideation" id="ideation">
-					<td>Ideation</td>
+				<tr class="setup" id="setup">
+					<td>Hardware Setup</td>
 					<td></td>
 					<td></td>
-					<td>
-						<span class="emoji" id="emoji">&#129321;</span>
-					</td>
-					<td>
-						<span class="emoji" id="emoji">&#129321;</span>
-					</td>
-					<td>
-						<span class="emoji" id="emoji">&#129321;</span>
-					</td>
+					<td></td>
+					<td></td>
+					<td></td>
 					<td>
 						<span class="emoji" id="emoji">&#129321;</span>
 					</td>
@@ -138,35 +153,46 @@
 					<td></td>
 					<td></td>
 				</tr>
-				<tr class="implementation" id="implementation">
-					<td>Implementation</td>
+				<tr class="collection" id="collection">
+					<td>Data Collection</td>
 					<td></td>
 					<td></td>
 					<td></td>
 					<td></td>
+					<td></td>
+					<td></td>
 					<td>
 						<span class="emoji" id="emoji">&#129321;</span>
 					</td>
 					<td>
 						<span class="emoji" id="emoji">&#129321;</span>
 					</td>
-					<td>
-						<span class="emoji" id="emoji">&#129321;</span>
-					</td>
-					<td>
-						<span class="emoji" id="emoji">&#129321;</span>
-					</td>
-					<td>
-						<span class="emoji" id="emoji">&#129321;</span>
-					</td>
-					<td>
-						<span class="emoji" id="emoji">&#129321;</span>
-					</td>
+					<td></td>
+					<td></td>
 					<td></td>
 					<td></td>
 				</tr>
-				<tr class="documentation" id="documentation">
-					<td>Documentation</td>
+				<tr class="fusion" id="fusion">
+					<td>Sensor Fusion</td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>
+						<span class="emoji" id="emoji">&#129321;</span>
+					</td>
+					<td>
+						<span class="emoji" id="emoji">&#129321;</span>
+					</td>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr class="autonomy" id="autonomy">
+					<td>Autonomy</td>
 					<td></td>
 					<td></td>
 					<td></td>
@@ -175,7 +201,9 @@
 					<td></td>
 					<td></td>
 					<td></td>
-					<td></td>
+					<td>
+						<span class="emoji" id="emoji">&#129321;</span>
+					</td>
 					<td>
 						<span class="emoji" id="emoji">&#129321;</span>
 					</td>
@@ -205,9 +233,26 @@
 				</tr>
 			</table>
 		</section>
+		<section class="main-section" id="final">
+			<header>Final Demonstration</header>
+			<p>During the final demonstration, we will need the following:</p>
+			<ul class="need" id="need">
+				<li>Turtlebot with sensors attached, caliberated and tested.</li>
+				<li>Jetson Orin Nano for Image Processing and Deep Learning.</li>
+				<li>50x50 feet space with obstacles placed randomly.</li>
+				<li>Guidance for topics like ROS 2 Navigation, ROS 2 Controls, SLAM and Sensor Fusion.</li>
+			</ul>
+			<p>During the final demonstration, we will show the following:</p>
+			<ul class="show" id="show">
+				<li>Mapping of the environment using SLAM.</li>
+				<li>Saving the map for future trips.</li>
+				<li>Navigation in saved environment.</li>
+				<li>Autonomous navigation in unknown environment.</li>
+			</ul>
+		</section>
 		<section class="main-section" id="impact">
 			<header>Impact</header>
-			<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Neque iste vitae dolorum qui dolorem nisi, reiciendis atque natus culpa aliquam voluptatibus commodi obcaecati maxime perferendis eos labore blanditiis officiis repudiandae.</p>
+			<p><p>This project will significantly enhance mobility for the visually impaired, providing them with an assistive tool that increases independence and safety. From a learning perspective, it will help us develop skills in robotic perception, control systems, reinforcement learning, and human-robot interaction. The insights gained could also contribute to future assistive technology research and improve autonomous navigation curricula.</p></p>
 		</section>
 	</main>
 	</body>
